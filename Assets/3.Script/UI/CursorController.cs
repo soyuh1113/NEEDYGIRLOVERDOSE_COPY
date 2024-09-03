@@ -7,11 +7,9 @@ public class CursorController : MonoBehaviour, IPointerEnterHandler, IPointerExi
 {
     public Texture2D Change_Cursor;
 
-    private Vector2 hotSpot = Vector2.zero;
-
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Cursor.SetCursor(Change_Cursor, hotSpot, CursorMode.ForceSoftware);
+        Cursor.SetCursor(Change_Cursor, Vector2.zero, CursorMode.ForceSoftware);
     }
 
     public void OnPointerExit(PointerEventData eventData)

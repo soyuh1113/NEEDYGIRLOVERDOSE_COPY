@@ -833,7 +833,7 @@ GameObject:
   - component: {fileID: 90472830}
   - component: {fileID: 90472829}
   m_Layer: 5
-  m_Name: L_CursorZone (2)
+  m_Name: NW_CursorZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -855,8 +855,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 4.5, y: -4.5}
-  m_SizeDelta: {x: 9, y: 9}
+  m_AnchoredPosition: {x: 2, y: -2}
+  m_SizeDelta: {x: 14, y: 14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &90472828
 MonoBehaviour:
@@ -5129,7 +5129,7 @@ GameObject:
   - component: {fileID: 516828144}
   - component: {fileID: 516828143}
   m_Layer: 5
-  m_Name: L_CursorZone (4)
+  m_Name: SE_CursorZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7147,7 +7147,7 @@ GameObject:
   - component: {fileID: 769515793}
   - component: {fileID: 769515792}
   m_Layer: 5
-  m_Name: L_CursorZone (1)
+  m_Name: SW_CursorZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7169,8 +7169,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 4.5, y: 4.5}
-  m_SizeDelta: {x: 9, y: 9}
+  m_AnchoredPosition: {x: 2, y: 4.5}
+  m_SizeDelta: {x: 14, y: 9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &769515791
 MonoBehaviour:
@@ -9329,7 +9329,7 @@ GameObject:
   - component: {fileID: 936666791}
   - component: {fileID: 936666792}
   m_Layer: 5
-  m_Name: D_CursorZone
+  m_Name: S_CursorZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9349,10 +9349,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 760956506}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 2.5}
-  m_SizeDelta: {x: 280, y: 5}
+  m_SizeDelta: {x: -18, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &936666789
 MonoBehaviour:
@@ -13811,7 +13811,7 @@ GameObject:
   - component: {fileID: 1341970759}
   - component: {fileID: 1341970758}
   m_Layer: 5
-  m_Name: L_CursorZone (3)
+  m_Name: NE_CursorZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13833,8 +13833,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.5, y: -4.5}
-  m_SizeDelta: {x: 9, y: 9}
+  m_AnchoredPosition: {x: -4.5, y: -2}
+  m_SizeDelta: {x: 9, y: 14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1341970757
 MonoBehaviour:
@@ -16538,7 +16538,7 @@ GameObject:
   - component: {fileID: 1567052319}
   - component: {fileID: 1567052318}
   m_Layer: 5
-  m_Name: L_CursorZone
+  m_Name: W_CursorZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16558,10 +16558,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 760956506}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -2.5, y: 0}
-  m_SizeDelta: {x: 5, y: 182}
+  m_SizeDelta: {x: 5, y: -18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1567052317
 MonoBehaviour:
@@ -17091,7 +17091,7 @@ GameObject:
   - component: {fileID: 1643698220}
   - component: {fileID: 1643698219}
   m_Layer: 5
-  m_Name: U_CursorZone
+  m_Name: N_CursorZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17111,10 +17111,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 760956506}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 2.5}
-  m_SizeDelta: {x: 280, y: 5}
+  m_SizeDelta: {x: -18, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1643698218
 MonoBehaviour:
@@ -18380,7 +18380,7 @@ GameObject:
   - component: {fileID: 1808195439}
   - component: {fileID: 1808195438}
   m_Layer: 5
-  m_Name: R_CursorZone
+  m_Name: E_CursorZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18400,10 +18400,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 760956506}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -2.5, y: 0}
-  m_SizeDelta: {x: 5, y: 182}
+  m_SizeDelta: {x: 5, y: -18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1808195437
 MonoBehaviour:
