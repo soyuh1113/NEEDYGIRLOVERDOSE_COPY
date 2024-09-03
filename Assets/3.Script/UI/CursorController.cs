@@ -1,8 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CursorController : MonoBehaviour
+public class CursorController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    
+    public Texture2D Change_Cursor;
+
+    private Vector2 hotSpot = Vector2.zero;
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Cursor.SetCursor(Change_Cursor, hotSpot, CursorMode.ForceSoftware);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
+    }
 }
