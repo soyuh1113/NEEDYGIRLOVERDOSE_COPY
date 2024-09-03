@@ -20,7 +20,7 @@ public class DayManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI today;
     [SerializeField] private TextMeshProUGUI nextday;
 
-    void Start()
+    public void ClickBtn()
     {
         StartCoroutine(DayCycle());
     }
@@ -31,9 +31,9 @@ public class DayManager : MonoBehaviour
         {
             yield return StartCoroutine(StartNewDay());
 
-            yield return StartCoroutine(PerformDayActivity());
-            yield return StartCoroutine(PerformEveningActivity());
-            yield return StartCoroutine(PerformNightActivity());
+            yield return StartCoroutine(AfternoonActivity());
+            yield return StartCoroutine(EveningActivity());
+            yield return StartCoroutine(NightActivity());
 
             currentDay++;
         }
@@ -51,7 +51,7 @@ public class DayManager : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator PerformDayActivity()
+    IEnumerator AfternoonActivity()
     {
         Debug.Log("Performing day activity...");
 
@@ -63,7 +63,7 @@ public class DayManager : MonoBehaviour
         Debug.Log("Current period: " + daytype);
     }
 
-    IEnumerator PerformEveningActivity()
+    IEnumerator EveningActivity()
     {
         Debug.Log("Performing evening activity...");
 
@@ -75,7 +75,7 @@ public class DayManager : MonoBehaviour
         Debug.Log("Current period: " + daytype);
     }
 
-    IEnumerator PerformNightActivity()
+    IEnumerator NightActivity()
     {
         Debug.Log("Performing night activity...");
 

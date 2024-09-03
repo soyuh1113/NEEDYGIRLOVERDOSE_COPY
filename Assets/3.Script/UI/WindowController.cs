@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class WindowController : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
-    [Header("¿Ãµø«“ UI")]
     [SerializeField] private Transform moveUITarget;
 
     private Vector2 originPos;
