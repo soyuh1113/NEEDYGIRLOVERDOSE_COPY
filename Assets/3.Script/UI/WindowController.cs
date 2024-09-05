@@ -17,6 +17,8 @@ public class WindowController : MonoBehaviour, IPointerDownHandler, IDragHandler
 
     private CursorLockMode cursorLockMode;
 
+    private CursorController cursorController;
+
     private void StopDrag()
     {
         Cursor.lockState = cursorLockMode;
@@ -35,6 +37,11 @@ public class WindowController : MonoBehaviour, IPointerDownHandler, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
+        //if (!resizing)
+        //{
+        //
+        //}
+
         movedPos = eventData.position - originMousePos;
         Vector2 newPosition = originPos + movedPos;
 
@@ -71,6 +78,7 @@ public class WindowController : MonoBehaviour, IPointerDownHandler, IDragHandler
 
         if (!isResizedToParent)
         {
+
             originalSize = uiRectTransform.sizeDelta;
             uiRectTransform.sizeDelta = new Vector2(parentRectTransform.rect.width, parentRectTransform.rect.height);
             isResizedToParent = true;

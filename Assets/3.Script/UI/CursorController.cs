@@ -5,19 +5,19 @@ using UnityEngine.EventSystems;
 
 public class CursorController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public Texture2D Change_Cursor1;
+    [SerializeField] private Texture2D[] cursor_Img;
 
-    public bool Change_Cursor = false;
+    public bool resizing = false;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Change_Cursor = true;
-        Cursor.SetCursor(Change_Cursor1, Vector2.zero, CursorMode.ForceSoftware);
+        resizing = true;
+        Cursor.SetCursor(cursor_Img[1], Vector2.zero, CursorMode.ForceSoftware);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Change_Cursor = false;
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
+        resizing = false;
+        Cursor.SetCursor(cursor_Img[0], Vector2.zero, CursorMode.ForceSoftware);
     }
 }
