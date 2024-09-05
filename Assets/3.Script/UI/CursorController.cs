@@ -3,16 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+public enum CursorType
+{
+    Default,
+    Horizontal,
+    Vertical,
+    Diagonal1,
+    Diagonal2
+}
+
 public class CursorController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private Texture2D[] cursor_Img;
+    private CursorType CursorType;
 
+    [SerializeField] private Texture2D[] cursor_Img;
     public bool resizing = false;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         resizing = true;
-        Cursor.SetCursor(cursor_Img[1], Vector2.zero, CursorMode.ForceSoftware);
+        Cursor.SetCursor(cursor_Img[2], Vector2.zero, CursorMode.ForceSoftware);
     }
 
     public void OnPointerExit(PointerEventData eventData)
