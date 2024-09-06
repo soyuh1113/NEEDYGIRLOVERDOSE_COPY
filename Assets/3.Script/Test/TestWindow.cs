@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class WindowController : MonoBehaviour, IPointerDownHandler, IDragHandler
+public class TestWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
     [SerializeField] private Transform moveUITarget;
 
@@ -16,8 +16,6 @@ public class WindowController : MonoBehaviour, IPointerDownHandler, IDragHandler
     private bool isResizedToParent = false;
 
     private CursorLockMode cursorLockMode;
-
-    private CursorController cursorController;
 
     private void StopDrag()
     {
@@ -37,28 +35,31 @@ public class WindowController : MonoBehaviour, IPointerDownHandler, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        movedPos = eventData.position - originMousePos;
-        Vector2 newPosition = originPos + movedPos;
+        if (!TestCursor.resizing)
+        {
+            movedPos = eventData.position - originMousePos;
+            Vector2 newPosition = originPos + movedPos;
 
-        RectTransform parentRectTransform = moveUITarget.parent.GetComponent<RectTransform>();
-        RectTransform uiRectTransform = moveUITarget.GetComponent<RectTransform>();
+            RectTransform parentRectTransform = moveUITarget.parent.GetComponent<RectTransform>();
+            RectTransform uiRectTransform = moveUITarget.GetComponent<RectTransform>();
 
-        Vector3[] parentCorners = new Vector3[4];
-        parentRectTransform.GetWorldCorners(parentCorners);
+            Vector3[] parentCorners = new Vector3[4];
+            parentRectTransform.GetWorldCorners(parentCorners);
 
-        Vector3[] uiCorners = new Vector3[4];
-        uiRectTransform.GetWorldCorners(uiCorners);
+            Vector3[] uiCorners = new Vector3[4];
+            uiRectTransform.GetWorldCorners(uiCorners);
 
-        float minX = parentCorners[0].x + (uiRectTransform.rect.width * moveUITarget.lossyScale.x) / 2;
-        float maxX = parentCorners[2].x - (uiRectTransform.rect.width * moveUITarget.lossyScale.x) / 2;
+            float minX = parentCorners[0].x + (uiRectTransform.rect.width * moveUITarget.lossyScale.x) / 2;
+            float maxX = parentCorners[2].x - (uiRectTransform.rect.width * moveUITarget.lossyScale.x) / 2;
 
-        float minY = parentCorners[0].y + (uiRectTransform.rect.height * moveUITarget.lossyScale.y) / 2;
-        float maxY = parentCorners[2].y - (uiRectTransform.rect.height * moveUITarget.lossyScale.y) / 2;
+            float minY = parentCorners[0].y + (uiRectTransform.rect.height * moveUITarget.lossyScale.y) / 2;
+            float maxY = parentCorners[2].y - (uiRectTransform.rect.height * moveUITarget.lossyScale.y) / 2;
 
-        newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
-        newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
-            
-        moveUITarget.position = newPosition;
+            newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
+            newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
+
+            moveUITarget.position = newPosition;
+        }
 
         if (Input.GetMouseButtonUp(0) || !gameObject.activeInHierarchy)
         {
@@ -85,3 +86,4 @@ public class WindowController : MonoBehaviour, IPointerDownHandler, IDragHandler
         }
     }
 }
+

@@ -3,19 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public enum CursorType
-{
-    Default,
-    Horizontal,
-    Vertical,
-    Diagonal1,
-    Diagonal2
-}
-
 public class CursorController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private CursorType CursorType;
-
     [SerializeField] private Texture2D[] cursor_Img;
     public bool resizing = false;
 
