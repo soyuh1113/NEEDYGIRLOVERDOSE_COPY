@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class TestWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
@@ -42,6 +41,9 @@ public class TestWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
 
             RectTransform parentRectTransform = moveUITarget.parent.GetComponent<RectTransform>();
             RectTransform uiRectTransform = moveUITarget.GetComponent<RectTransform>();
+
+            uiRectTransform.SetAsLastSibling();
+            //UI È°¼ºÈ­
 
             Vector3[] parentCorners = new Vector3[4];
             parentRectTransform.GetWorldCorners(parentCorners);

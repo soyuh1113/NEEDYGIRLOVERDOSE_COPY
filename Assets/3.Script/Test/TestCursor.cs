@@ -13,7 +13,7 @@ public enum CursorType
 }
 
 public class TestCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IDragHandler
-{//드래그 이벤트 옮기기
+{
     public CursorType cursorType = CursorType.None;
 
     [SerializeField] private Texture2D[] cursor_Img;
@@ -63,13 +63,11 @@ public class TestCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
 
     //UI영역에 커서 오버 시 커서 모양 변경 - O
-    //원하는 방향으로 드래그 시 그 방향 그대로 UI 크기 변경
+    //원하는 방향으로 드래그 시 그 방향 그대로 UI 크기 변경 - O
     //마우스 위치까지 늘리거나 줄이기 - O
 
     //UI를 드래그하여 위치를 옮기고 있을 땐 크기 변경 불가 - O
     //UI존을 넘어가지 못하게 하기
-
-
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -103,6 +101,8 @@ public class TestCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         
         newSize.x = Mathf.Max(newSize.x, 135);
         newSize.y = Mathf.Max(newSize.y, 60);
+
+
 
         uiRectTransform.sizeDelta = newSize;
 
