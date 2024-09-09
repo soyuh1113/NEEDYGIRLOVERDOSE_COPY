@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class TestWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
     [SerializeField] private Transform moveUITarget;
+    public GameObject parentObject;
+
+    public Sprite imageA;
+    public Sprite imageB;
 
     private Vector2 originPos;
     private Vector2 originMousePos;
@@ -43,8 +48,7 @@ public class TestWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
             RectTransform uiRectTransform = moveUITarget.GetComponent<RectTransform>();
 
             uiRectTransform.SetAsLastSibling();
-            //HierarchyOrder.UpdateChildImages();
-            //UI È°¼ºÈ­
+            UpdateChildImages();
 
             Vector3[] parentCorners = new Vector3[4];
             parentRectTransform.GetWorldCorners(parentCorners);
@@ -97,5 +101,27 @@ public class TestWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
             isResizedToParent = false;
         }
     }
-}
 
+    public void UpdateChildImages()
+    {
+        if (parentObject.transform.childCount > 0)
+        {
+            Transform lastChild = parentObject.transform.GetChild(parentObject.transform.childCount - 1);
+
+            for (int i = 0; i < parentObject.transform.childCount; i++)
+            {
+                Transform child = parentObject.transform.GetChild(i);
+                Image childImage = child.GetComponent<Image>();
+
+                if (child == lastChild)
+                {
+                    childImage.sprite = imageA;
+                }
+                else
+                {
+                    childImage.sprite = imageB;
+                }
+            }
+        }
+    }
+}
