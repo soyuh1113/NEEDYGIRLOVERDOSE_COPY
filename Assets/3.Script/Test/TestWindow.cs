@@ -43,6 +43,7 @@ public class TestWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
             RectTransform uiRectTransform = moveUITarget.GetComponent<RectTransform>();
 
             uiRectTransform.SetAsLastSibling();
+            //HierarchyOrder.UpdateChildImages();
             //UI È°¼ºÈ­
 
             Vector3[] parentCorners = new Vector3[4];
@@ -78,11 +79,20 @@ public class TestWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
         {
 
             originalSize = uiRectTransform.sizeDelta;
-            uiRectTransform.sizeDelta = new Vector2(parentRectTransform.rect.width, parentRectTransform.rect.height);
+
+            RectTransform myRectTransform;
+            myRectTransform = transform as RectTransform;
+            myRectTransform.SetAnchor(AnchorPresets.StretchAll);
+
+            //uiRectTransform.sizeDelta = new Vector2(parentRectTransform.rect.width, parentRectTransform.rect.height);
             isResizedToParent = true;
         }
         else
         {
+            RectTransform myRectTransform;
+            myRectTransform = transform as RectTransform;
+            myRectTransform.SetAnchor(AnchorPresets.MiddleCenter);
+
             uiRectTransform.sizeDelta = originalSize;
             isResizedToParent = false;
         }

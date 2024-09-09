@@ -5,16 +5,36 @@ using UnityEngine.UI;
 
 public class HierarchyOrder : MonoBehaviour
 {
-    public void testbtn()
+    public GameObject parentObject; 
+    public Sprite imageA;  
+    public Sprite imageB;  
+
+    public void UpdateChildImages()
     {
-        GameObject goRed = GameObject.Find("Canvas/TestUI");
-        GameObject goBlue = GameObject.Find("Canvas/TestUI (1)");
+        if (parentObject.transform.childCount > 0)
+        {
+            Transform firstChild = parentObject.transform.GetChild(0);
 
-        Debug.Log("before goRed : " + goRed.transform.GetSiblingIndex());
-        Debug.Log("before goBlue : " + goBlue.transform.GetSiblingIndex());
+            for (int i = 0; i < parentObject.transform.childCount; i++)
+            {
+                Transform child = parentObject.transform.GetChild(i);
+                Image childImage = child.GetComponent<Image>();
 
-        goRed.transform.SetSiblingIndex(0);
-        Debug.Log("after goRed : " + goRed.transform.GetSiblingIndex());
-        Debug.Log("after goBlue : " + goBlue.transform.GetSiblingIndex());
+                if (child == firstChild)
+                {
+                    childImage.sprite = imageA;
+                }
+                else
+                {
+                    childImage.sprite = imageB;
+                }
+            }
+        }
+    }
+
+    public void MoveToLastSibling(GameObject obj)
+    {
+        obj.transform.SetAsLastSibling();
+        UpdateChildImages();
     }
 }

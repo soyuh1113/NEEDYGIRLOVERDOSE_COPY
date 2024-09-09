@@ -9,7 +9,9 @@ public enum CursorType
     Horizontal,
     Vertical,
     Diagonal1,
-    Diagonal2
+    Diagonal2,
+    Diagonal3,
+    Diagonal4,
 }
 
 public class TestCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IDragHandler
@@ -42,6 +44,12 @@ public class TestCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             case CursorType.Diagonal2:
                 Cursor.SetCursor(cursor_Img[4], Vector2.zero, CursorMode.ForceSoftware);
                 break;
+            case CursorType.Diagonal3:
+                Cursor.SetCursor(cursor_Img[3], Vector2.zero, CursorMode.ForceSoftware);
+                break;
+            case CursorType.Diagonal4:
+                Cursor.SetCursor(cursor_Img[4], Vector2.zero, CursorMode.ForceSoftware);
+                break;
         }
     }
 
@@ -62,13 +70,6 @@ public class TestCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         moveUITarget.SetAsLastSibling();
     }
 
-    //UI영역에 커서 오버 시 커서 모양 변경 - O
-    //원하는 방향으로 드래그 시 그 방향 그대로 UI 크기 변경 - O
-    //마우스 위치까지 늘리거나 줄이기 - O
-
-    //UI를 드래그하여 위치를 옮기고 있을 땐 크기 변경 불가 - O
-    //UI존을 넘어가지 못하게 하기
-
     public void OnDrag(PointerEventData eventData)
     {
         RectTransform parentRectTransform = moveUITarget.parent.GetComponent<RectTransform>();
@@ -78,31 +79,40 @@ public class TestCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
         Vector2 newSize = uiRectTransform.sizeDelta;
 
+        //세분화
+
         switch (cursorType)
         {
             case CursorType.Horizontal:
                 newSize.x += dragAmount.x;
                 break;
-
             case CursorType.Vertical:
                 newSize.y -= dragAmount.y;
                 break;
-
             case CursorType.Diagonal1:
-                newSize.x += dragAmount.x;
-                newSize.y -= dragAmount.y;
+                newSize.x -= dragAmount.x;
+                newSize.y += dragAmount.y;
                 break;
-
             case CursorType.Diagonal2:
                 newSize.x -= dragAmount.x;
                 newSize.y -= dragAmount.y;
+                break;
+            case CursorType.Diagonal3:
+                newSize.x += dragAmount.x;
+                newSize.y -= dragAmount.y;
+                break;
+            case CursorType.Diagonal4:
+                newSize.x += dragAmount.x;
+                newSize.y += dragAmount.y;
                 break;
         }
         
         newSize.x = Mathf.Max(newSize.x, 135);
         newSize.y = Mathf.Max(newSize.y, 60);
 
-
+        Vector2 parentSize = parentRectTransform.rect.size;
+        newSize.x = Mathf.Min(newSize.x, parentSize.x);
+        newSize.y = Mathf.Min(newSize.y, parentSize.y);
 
         uiRectTransform.sizeDelta = newSize;
 
