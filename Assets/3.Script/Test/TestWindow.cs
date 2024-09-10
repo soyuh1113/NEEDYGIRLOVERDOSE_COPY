@@ -7,7 +7,8 @@ using UnityEngine.EventSystems;
 public class TestWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
     [SerializeField] private Transform moveUITarget;
-    public GameObject parentObject;
+
+    //public GameObject parentObject;
 
     public Sprite imageA;
     public Sprite imageB;
@@ -81,7 +82,6 @@ public class TestWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
 
         if (!isResizedToParent)
         {
-
             originalSize = uiRectTransform.sizeDelta;
 
             RectTransform myRectTransform;
@@ -104,24 +104,29 @@ public class TestWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
 
     public void UpdateChildImages()
     {
-        if (parentObject.transform.childCount > 0)
+        if (moveUITarget.parent != null)
         {
-            Transform lastChild = parentObject.transform.GetChild(parentObject.transform.childCount - 1);
+            Transform parentTransform = moveUITarget.parent;
 
-            for (int i = 0; i < parentObject.transform.childCount; i++)
+            if (parentTransform.childCount > 0)
             {
-                Transform child = parentObject.transform.GetChild(i);
-                Image childImage = child.GetComponent<Image>();
+                Transform lastChild = parentTransform.transform.GetChild(parentTransform.transform.childCount - 1);
 
-                if (child == lastChild)
+                for (int i = 0; i < parentTransform.transform.childCount; i++)
                 {
-                    childImage.sprite = imageA;
+                    Transform child = parentTransform.transform.GetChild(i);
+                    Image childImage = child.GetComponent<Image>();
+
+                    if (child == lastChild)
+                    {
+                        childImage.sprite = imageA;
+                    }
+                    else
+                    {
+                        childImage.sprite = imageB;
+                    }
                 }
-                else
-                {
-                    childImage.sprite = imageB;
-                }
-            }
+            } 
         }
     }
 }

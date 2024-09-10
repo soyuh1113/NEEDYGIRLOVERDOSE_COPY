@@ -1369,7 +1369,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1240806351}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074645780}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: Btn_Click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1240806351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1850,7 +1862,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2074645779}
-  - component: {fileID: 2074645778}
+  - component: {fileID: 2074645780}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -1858,20 +1870,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2074645778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2074645777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea025fb770a6b564c83a6806b585d427, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uibtnPrefab: {fileID: 484759323451242750, guid: a611cbe7a138d3640be1e1d7424c7264, type: 3}
-  uiPrefabPos: {fileID: 5892839261013979451, guid: a611cbe7a138d3640be1e1d7424c7264, type: 3}
 --- !u!4 &2074645779
 Transform:
   m_ObjectHideFlags: 0
@@ -1887,6 +1885,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2074645780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074645777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea025fb770a6b564c83a6806b585d427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiPrefab: {fileID: 0}
+  uiPrefabPos: {x: 0, y: 0}
+  togglePrefab: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
