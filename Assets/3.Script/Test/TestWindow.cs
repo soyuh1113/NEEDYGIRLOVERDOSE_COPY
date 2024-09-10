@@ -8,8 +8,6 @@ public class TestWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
     [SerializeField] private Transform moveUITarget;
 
-    //public GameObject parentObject;
-
     public Sprite imageA;
     public Sprite imageB;
 

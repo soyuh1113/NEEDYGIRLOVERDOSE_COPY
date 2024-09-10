@@ -6,8 +6,10 @@ using UnityEngine.EventSystems;
 public enum CursorType
 {
     None,
-    Horizontal,
-    Vertical,
+    Horizontal1,
+    Horizontal2,
+    Vertical1,
+    Vertical2,
     Diagonal1,
     Diagonal2,
     Diagonal3,
@@ -32,10 +34,16 @@ public class TestCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
         switch (cursorType)
         {
-            case CursorType.Horizontal:
+            case CursorType.Horizontal1:
                 Cursor.SetCursor(cursor_Img[1], Vector2.zero, CursorMode.ForceSoftware);
                 break;
-            case CursorType.Vertical:
+            case CursorType.Horizontal2:
+                Cursor.SetCursor(cursor_Img[1], Vector2.zero, CursorMode.ForceSoftware);
+                break;
+            case CursorType.Vertical1:
+                Cursor.SetCursor(cursor_Img[2], Vector2.zero, CursorMode.ForceSoftware);
+                break;
+            case CursorType.Vertical2:
                 Cursor.SetCursor(cursor_Img[2], Vector2.zero, CursorMode.ForceSoftware);
                 break;
             case CursorType.Diagonal1:
@@ -83,23 +91,29 @@ public class TestCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
         switch (cursorType)
         {
-            case CursorType.Horizontal:
+            case CursorType.Horizontal1:
+                newSize.x -= dragAmount.x;
+                break;
+            case CursorType.Horizontal2:
                 newSize.x += dragAmount.x;
                 break;
-            case CursorType.Vertical:
+            case CursorType.Vertical1:
+                newSize.y += dragAmount.y;
+                break;
+            case CursorType.Vertical2:
                 newSize.y -= dragAmount.y;
                 break;
             case CursorType.Diagonal1:
-                newSize.x -= dragAmount.x;
-                newSize.y += dragAmount.y;
+                newSize.x += dragAmount.x;
+                newSize.y -= dragAmount.y;
                 break;
             case CursorType.Diagonal2:
                 newSize.x -= dragAmount.x;
                 newSize.y -= dragAmount.y;
                 break;
             case CursorType.Diagonal3:
-                newSize.x += dragAmount.x;
-                newSize.y -= dragAmount.y;
+                newSize.x -= dragAmount.x;
+                newSize.y += dragAmount.y;
                 break;
             case CursorType.Diagonal4:
                 newSize.x += dragAmount.x;
