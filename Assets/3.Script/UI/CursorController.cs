@@ -17,10 +17,10 @@ public enum CursorType
 
 public class CursorController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public CursorType cursorType;
+    public static CursorType cursorType;
 
     [SerializeField] private Texture2D[] cursor_Img;
-    public bool resizing = false;
+    public static bool resizing = false;
     public void OnPointerEnter(PointerEventData eventData)
     {
         resizing = true;
