@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public enum CursorType
+public enum NCursorType
 {
     None,
     Horizontal1,
     Horizontal2,
     Vertical1,
     Vertical2,
-    Diagonal1,
+    Diagonal1,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
     Diagonal2,
     Diagonal3,
     Diagonal4,
@@ -18,7 +18,7 @@ public enum CursorType
 
 public class TestCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IDragHandler
 {
-    public CursorType cursorType = CursorType.None;
+    public NCursorType cursorType = NCursorType.None;
 
     [SerializeField] private Texture2D[] cursor_Img;
     public static bool resizing = false;
@@ -26,7 +26,7 @@ public class TestCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] private Transform moveUITarget;
     private CursorLockMode cursorLockMode;
     private Vector2 originPos;
-    private Vector2 originMousePos;
+    private Vector2 originMousePos;  
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -34,28 +34,28 @@ public class TestCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
         switch (cursorType)
         {
-            case CursorType.Horizontal1:
+            case NCursorType.Horizontal1:
                 Cursor.SetCursor(cursor_Img[1], Vector2.zero, CursorMode.ForceSoftware);
                 break;
-            case CursorType.Horizontal2:
+            case NCursorType.Horizontal2:
                 Cursor.SetCursor(cursor_Img[1], Vector2.zero, CursorMode.ForceSoftware);
                 break;
-            case CursorType.Vertical1:
+            case NCursorType.Vertical1:
                 Cursor.SetCursor(cursor_Img[2], Vector2.zero, CursorMode.ForceSoftware);
                 break;
-            case CursorType.Vertical2:
+            case NCursorType.Vertical2:
                 Cursor.SetCursor(cursor_Img[2], Vector2.zero, CursorMode.ForceSoftware);
                 break;
-            case CursorType.Diagonal1:
+            case NCursorType.Diagonal1:
                 Cursor.SetCursor(cursor_Img[3], Vector2.zero, CursorMode.ForceSoftware);
                 break;
-            case CursorType.Diagonal2:
+            case NCursorType.Diagonal2:
                 Cursor.SetCursor(cursor_Img[4], Vector2.zero, CursorMode.ForceSoftware);
                 break;
-            case CursorType.Diagonal3:
+            case NCursorType.Diagonal3:
                 Cursor.SetCursor(cursor_Img[3], Vector2.zero, CursorMode.ForceSoftware);
                 break;
-            case CursorType.Diagonal4:
+            case NCursorType.Diagonal4:
                 Cursor.SetCursor(cursor_Img[4], Vector2.zero, CursorMode.ForceSoftware);
                 break;
         }
@@ -91,31 +91,31 @@ public class TestCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
         switch (cursorType)
         {
-            case CursorType.Horizontal1:
+            case NCursorType.Horizontal1:
                 newSize.x -= dragAmount.x;
                 break;
-            case CursorType.Horizontal2:
+            case NCursorType.Horizontal2:
                 newSize.x += dragAmount.x;
                 break;
-            case CursorType.Vertical1:
+            case NCursorType.Vertical1:
                 newSize.y += dragAmount.y;
                 break;
-            case CursorType.Vertical2:
+            case NCursorType.Vertical2:
                 newSize.y -= dragAmount.y;
                 break;
-            case CursorType.Diagonal1:
+            case NCursorType.Diagonal1:
                 newSize.x += dragAmount.x;
                 newSize.y -= dragAmount.y;
                 break;
-            case CursorType.Diagonal2:
+            case NCursorType.Diagonal2:
                 newSize.x -= dragAmount.x;
                 newSize.y -= dragAmount.y;
                 break;
-            case CursorType.Diagonal3:
+            case NCursorType.Diagonal3:
                 newSize.x -= dragAmount.x;
                 newSize.y += dragAmount.y;
                 break;
-            case CursorType.Diagonal4:
+            case NCursorType.Diagonal4:
                 newSize.x += dragAmount.x;
                 newSize.y += dragAmount.y;
                 break;
@@ -131,6 +131,30 @@ public class TestCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         uiRectTransform.sizeDelta = newSize;
 
         originMousePos = eventData.position;
+
+        ClampToParent(uiRectTransform, parentRectTransform);
+    }
+
+    private void ClampToParent(RectTransform uiRectTransform, RectTransform parentRectTransform)
+    {
+        Vector3[] parentCorners = new Vector3[4];
+        parentRectTransform.GetWorldCorners(parentCorners);
+
+        Vector3[] uiCorners = new Vector3[4];
+        uiRectTransform.GetWorldCorners(uiCorners);
+
+        Vector2 clampedPosition = uiRectTransform.anchoredPosition;
+
+        float minX = parentCorners[0].x + (uiRectTransform.rect.width * uiRectTransform.lossyScale.x) / 2;
+        float maxX = parentCorners[2].x - (uiRectTransform.rect.width * uiRectTransform.lossyScale.x) / 2;
+
+        float minY = parentCorners[0].y + (uiRectTransform.rect.height * uiRectTransform.lossyScale.y) / 2;
+        float maxY = parentCorners[2].y - (uiRectTransform.rect.height * uiRectTransform.lossyScale.y) / 2;
+
+        clampedPosition.x = Mathf.Clamp(uiRectTransform.position.x, minX, maxX);
+        clampedPosition.y = Mathf.Clamp(uiRectTransform.position.y, minY, maxY);
+
+        uiRectTransform.position = clampedPosition;
     }
 }
 

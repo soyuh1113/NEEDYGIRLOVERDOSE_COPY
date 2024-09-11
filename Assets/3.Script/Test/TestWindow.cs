@@ -86,7 +86,8 @@ public class TestWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
             myRectTransform = transform as RectTransform;
             myRectTransform.SetAnchor(AnchorPresets.StretchAll);
 
-            //uiRectTransform.sizeDelta = new Vector2(parentRectTransform.rect.width, parentRectTransform.rect.height);
+            Vector2 newSize=new Vector2(Mathf.Min(parentRectTransform.rect.width, uiRectTransform.sizeDelta.x),
+            Mathf.Min(parentRectTransform.rect.height, uiRectTransform.sizeDelta.y));
             isResizedToParent = true;
         }
         else
