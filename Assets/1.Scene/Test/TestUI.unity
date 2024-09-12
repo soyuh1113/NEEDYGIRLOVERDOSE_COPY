@@ -776,10 +776,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1041,6 +1041,7 @@ GameObject:
   - component: {fileID: 1032878663}
   - component: {fileID: 1032878665}
   - component: {fileID: 1032878664}
+  - component: {fileID: 1032878666}
   m_Layer: 5
   m_Name: UIBtnZone
   m_TagString: Untagged
@@ -1105,6 +1106,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1032878662}
   m_CullTransparentMesh: 1
+--- !u!114 &1032878666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032878662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7479af077707178408ab16c706c121af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spacing: 10
+  autoResize: 1
+  layoutDirty: 1
 --- !u!1 &1039530280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,7 +1474,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2074645780}
-        m_TargetAssemblyTypeName: TestBtnGruop, Assembly-CSharp
+        m_TargetAssemblyTypeName: UISetactive, Assembly-CSharp
         m_MethodName: BtnClick
         m_Mode: 1
         m_Arguments:
@@ -1942,16 +1958,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2074645777}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7479af077707178408ab16c706c121af, type: 3}
+  m_Script: {fileID: 11500000, guid: f28c62e2ac9a9dc44be318d0e1da694e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   uiZone: {fileID: 786544337}
   uiBtnZone: {fileID: 1032878662}
   uiPrefab: {fileID: 1845833750314767387, guid: a611cbe7a138d3640be1e1d7424c7264, type: 3}
-  uiPrefabPos: {x: 0, y: 0}
   btnPrefab: {fileID: 4786238776438427977, guid: f3415d7723fc7704aae430240fcbccf4, type: 3}
-  btnPos: {x: 0, y: 0}
-  parentRect: {fileID: 786544338}
+  layoutScript: {fileID: 1032878666}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

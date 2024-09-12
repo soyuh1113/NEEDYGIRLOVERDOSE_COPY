@@ -87,8 +87,6 @@ public class TestCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
         Vector2 newSize = uiRectTransform.sizeDelta;
 
-        //¼¼ºÐÈ­
-
         switch (cursorType)
         {
             case NCursorType.Horizontal1:

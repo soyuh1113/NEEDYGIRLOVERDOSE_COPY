@@ -1,79 +1,94 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
+[RequireComponent(typeof(RectTransform))]
 public class TestBtnGruop : MonoBehaviour
 {
-    [SerializeField] private GameObject uiZone;
-    [SerializeField] private GameObject uiBtnZone;
+    [SerializeField] private float spacing = 5f;
+    [SerializeField] private bool autoResize = true;
+    [SerializeField] private bool layoutDirty = true;
 
-    [SerializeField] private GameObject uiPrefab;
-    [SerializeField] private Vector2 uiPrefabPos;
-
-    [SerializeField] private GameObject btnPrefab;
-    [SerializeField] private Vector2 btnPos;
-
-    public RectTransform parentRect;
-    //private float spacing = 10f;
-
-    //private float buttonWidth = 100f;
-    //private float buttonHeight = 50f;
-   //private float minButtonWidth = 50f;
-   //private float maxButtonWidth = 150f;
-
-    public void BtnClick()
+    private void Start()
     {
-        GameObject clone = Instantiate(uiPrefab, uiZone.transform);
-        RectTransform rectTransform = clone.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = uiPrefabPos;
-
-        GameObject btn = Instantiate(btnPrefab, uiBtnZone.transform);
-        RectTransform recttransform = btn.GetComponent<RectTransform>();
-        recttransform.anchoredPosition = btnPos;
-
-        //recttransform.sizeDelta = new Vector2(buttonWidth, buttonHeight);
-        //
-        //Text buttonText = btn.GetComponentInChildren<Text>();
-        //buttonText.text = "This is a long text";
-        //buttonText.GetComponent<TextData>().originalText = buttonText.text;
-        //
-        //AdjustTextToFit(buttonText, buttonWidth);
+        LayoutElements();
     }
 
-   //void AdjustTextToFit(Text text, float buttonWidth)
-   //{
-   //    string originalText = text.GetComponent<TextData>().originalText; // 원본 텍스트 가져오기
-   //    TextGenerator textGen = new TextGenerator();
-   //    TextGenerationSettings settings = text.GetGenerationSettings(Vector2.zero);
-   //
-   //    if (textGen.GetPreferredWidth(originalText, settings) > buttonWidth)
-   //    {
-   //        int charsToShow = originalText.Length;
-   //        while (charsToShow > 0 && textGen.GetPreferredWidth(originalText.Substring(0, charsToShow) + "...", settings) > buttonWidth)
-   //        {
-   //            charsToShow--;
-   //        }
-   //
-   //        text.text = originalText.Substring(0, charsToShow) + "...";
-   //    }
-   //    else
-   //    {
-   //        text.text = originalText;
-   //    }
-   //}
-   //
-   //public void ResizeButton(GameObject button, float newWidth)
-   //{
-   //    RectTransform buttonRect = button.GetComponent<RectTransform>();
-   //    buttonRect.sizeDelta = new Vector2(newWidth, buttonRect.sizeDelta.y);
-   //
-   //    Text buttonText = button.GetComponentInChildren<Text>();
-   //    AdjustTextToFit(buttonText, newWidth);
-   //}
-}
+    private void Update()
+    {
+        if (layoutDirty)
+        {
+            LayoutElements();
+            layoutDirty = false;
+        }
+    }
 
-public class TextData : MonoBehaviour
-{
-    public string originalText;
+    public void SetLayoutDirty()
+    {
+        layoutDirty = true;
+    }
+
+    public void LayoutElements()
+    {
+        RectTransform parentRect = GetComponent<RectTransform>();
+        int childCount = parentRect.childCount;
+
+        float totalWidth = 0f;
+
+        for (int i = 0; i < childCount; i++)
+        {
+            RectTransform child = parentRect.GetChild(i) as RectTransform;
+            if (child == null) continue;
+
+            totalWidth += child.sizeDelta.x + spacing;
+        }
+
+        if (totalWidth > parentRect.rect.width)
+        {
+            float scaleFactor = (parentRect.rect.width - spacing * (childCount - 1)) / (totalWidth - spacing * (childCount - 1));
+
+            for (int i = 0; i < childCount; i++)
+            {
+                RectTransform child = parentRect.GetChild(i) as RectTransform;
+                if (child == null) continue;
+
+                Vector2 originalSize = child.sizeDelta;
+                child.sizeDelta = new Vector2(originalSize.x * scaleFactor, originalSize.y);
+
+                if (i == 0)
+                {
+                    child.anchoredPosition = new Vector2(0, 0);
+                }
+                else
+                {
+                    RectTransform previousChild = parentRect.GetChild(i - 1) as RectTransform;
+                    child.anchoredPosition = new Vector2(previousChild.anchoredPosition.x + previousChild.sizeDelta.x + spacing, 0);
+                }
+            }
+        }
+        else
+        {
+            float currentX = 0f;
+            for (int i = 0; i < childCount; i++)
+            {
+                RectTransform child = parentRect.GetChild(i) as RectTransform;
+                if (child == null) continue;
+
+                child.anchoredPosition = new Vector2(currentX, 0);
+                currentX += child.sizeDelta.x + spacing;
+            }
+        }
+    }
+
+    public void AddButton(GameObject buttonPrefab)
+    {
+        GameObject newButton = Instantiate(buttonPrefab, transform);
+        SetLayoutDirty();
+    }
+
+    public void RemoveButton(GameObject button)
+    {
+        Destroy(button);
+        SetLayoutDirty();
+    }
 }
