@@ -10,8 +10,8 @@ public class UISetactive : MonoBehaviour
     [SerializeField] private GameObject btnPrefab;
     [SerializeField] private TestBtnGruop layoutScript;
 
-    private Vector2 uiPos;
-    private Vector2 btnPos;
+    private Vector2 uiPos;  //어떤 ui냐에 따라 다름
+    private Vector2 btnPos;   //-85,0
 
     public void BtnClick()
     {
