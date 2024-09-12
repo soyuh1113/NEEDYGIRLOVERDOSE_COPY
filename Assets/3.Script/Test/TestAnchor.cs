@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public enum AnchorPresets
 {
@@ -46,7 +45,7 @@ public enum PivotPresets
 
 public static class TestAnchor
 {
-    public static void SetAnchor(this RectTransform source, AnchorPresets allign, float offsetX=0, float offsetY=0,float duration=1, Ease ease = Ease.OutCubic)
+    public static void SetAnchor(this RectTransform source, AnchorPresets allign, float offsetX=0, float offsetY=0)
     {
         source.anchoredPosition = new Vector3(offsetX, offsetY, 0);
 
