@@ -43,7 +43,7 @@ public enum PivotPresets
     BottomRight,
 }
 
-public static class TestAnchor
+public static class Change_AnchorPreset
 {
     public static void SetAnchor(this RectTransform source, AnchorPresets allign, float offsetX=0, float offsetY=0)
     {

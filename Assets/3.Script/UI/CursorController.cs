@@ -15,9 +15,11 @@ public enum CursorType
     Diagonal_RD
 }
 
-public class CursorController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class CursorController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IDragHandler
 {
-    public static CursorType cursorType;
+    public CursorType cursorType;
+
+    private WindowController windowController;
 
     [SerializeField] private Texture2D[] cursor_Img;
     public static bool resizing = false;
@@ -58,5 +60,94 @@ public class CursorController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         resizing = false;
         Cursor.SetCursor(cursor_Img[0], Vector2.zero, CursorMode.ForceSoftware);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        windowController.cursorLockMode = Cursor.lockState;
+        Cursor.lockState = CursorLockMode.Confined;
+
+        windowController.originPos = windowController.uiTarget.position;
+        windowController.originMousePos = eventData.position;
+
+        windowController.uiTarget.SetAsLastSibling();
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        windowController = GetComponent<WindowController>();
+
+        RectTransform uiRectTransform = windowController.uiTarget.GetComponent<RectTransform>();
+        RectTransform parentRectTransform = windowController.uiTarget.parent.GetComponent<RectTransform>();
+
+        Vector2 dragAmount = eventData.position - windowController.originMousePos;
+        Vector2 newSize = uiRectTransform.sizeDelta;
+        
+        switch (cursorType)
+        {
+            case CursorType.Horizontal_L:
+                newSize.x -= dragAmount.x;
+                break;
+            case CursorType.Horizontal_R:
+                newSize.x += dragAmount.x;
+                break;
+            case CursorType.Vertical_U:
+                newSize.y += dragAmount.y;
+                break;
+            case CursorType.Vertical_D:
+                newSize.y -= dragAmount.y;
+                break;
+            case CursorType.Diagonal_LU:
+                newSize.x += dragAmount.x;
+                newSize.y -= dragAmount.y;
+                break;
+            case CursorType.Diagonal_LD:
+                newSize.x -= dragAmount.x;
+                newSize.y -= dragAmount.y;
+                break;
+            case CursorType.Diagonal_RU:
+                newSize.x -= dragAmount.x;
+                newSize.y += dragAmount.y;
+                break;
+            case CursorType.Diagonal_RD:
+                newSize.x += dragAmount.x;
+                newSize.y += dragAmount.y;
+                break;
+        }
+
+        newSize.x = Mathf.Max(newSize.x, 135);
+        newSize.y = Mathf.Max(newSize.y, 60);
+       
+        Vector2 parentSize = parentRectTransform.rect.size;
+        newSize.x = Mathf.Min(newSize.x, parentSize.x);
+        newSize.y = Mathf.Min(newSize.y, parentSize.y);
+       
+        uiRectTransform.sizeDelta = newSize;
+       
+        windowController.originMousePos = eventData.position;
+       
+        ClampToParent(uiRectTransform, parentRectTransform);
+    }
+
+    private void ClampToParent(RectTransform uiRectTransform, RectTransform parentRectTransform)
+    {
+        Vector3[] parentCorners = new Vector3[4];
+        parentRectTransform.GetWorldCorners(parentCorners);
+
+        Vector3[] uiCorners = new Vector3[4];
+        uiRectTransform.GetWorldCorners(uiCorners);
+
+        Vector2 clampedPosition = uiRectTransform.anchoredPosition;
+
+        float minX = parentCorners[0].x + (uiRectTransform.rect.width * uiRectTransform.lossyScale.x) / 2;
+        float maxX = parentCorners[2].x - (uiRectTransform.rect.width * uiRectTransform.lossyScale.x) / 2;
+
+        float minY = parentCorners[0].y + (uiRectTransform.rect.height * uiRectTransform.lossyScale.y) / 2;
+        float maxY = parentCorners[2].y - (uiRectTransform.rect.height * uiRectTransform.lossyScale.y) / 2;
+
+        clampedPosition.x = Mathf.Clamp(uiRectTransform.position.x, minX, maxX);
+        clampedPosition.y = Mathf.Clamp(uiRectTransform.position.y, minY, maxY);
+
+        uiRectTransform.position = clampedPosition;
     }
 }
