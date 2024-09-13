@@ -469,6 +469,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 17.629395
       objectReference: {fileID: 0}
+    - target: {fileID: 1089919869945412794, guid: a611cbe7a138d3640be1e1d7424c7264, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1845833750314767387, guid: a611cbe7a138d3640be1e1d7424c7264, type: 3}
       propertyPath: m_Name
       value: TestUI
@@ -580,6 +584,10 @@ PrefabInstance:
     - target: {fileID: 7726144120334720976, guid: a611cbe7a138d3640be1e1d7424c7264, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -27.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581024982681684717, guid: a611cbe7a138d3640be1e1d7424c7264, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InActive
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2402,7 +2410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spacing: 5
-  autoResize: 0
+  autoResize: 1
   layoutDirty: 1
 --- !u!224 &1850178152
 RectTransform:

@@ -33,6 +33,8 @@ public class TestBtnGruop : MonoBehaviour
         RectTransform parentRect = GetComponent<RectTransform>();
         int childCount = parentRect.childCount;
 
+        if (childCount == 0) return;
+
         float totalWidth = 0f;
 
         for (int i = 0; i < childCount; i++)

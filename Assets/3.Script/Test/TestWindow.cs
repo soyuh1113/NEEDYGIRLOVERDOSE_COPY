@@ -128,4 +128,9 @@ public class TestWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
             } 
         }
     }
+
+    public void InActive()
+    {
+        gameObject.SetActive(false);
+    }
 }
