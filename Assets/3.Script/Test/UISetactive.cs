@@ -26,4 +26,9 @@ public class UISetactive : MonoBehaviour
         layoutScript.SetLayoutDirty();
     }
 
+    public void UIActive()
+    {
+        
+    }
+
 }

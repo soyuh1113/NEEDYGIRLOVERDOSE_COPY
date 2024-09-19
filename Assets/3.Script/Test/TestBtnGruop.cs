@@ -6,7 +6,7 @@ using UnityEngine;
 public class TestBtnGruop : MonoBehaviour
 {
     [SerializeField] private float spacing = 5f;
-    [SerializeField] private bool autoResize = true;
+    //[SerializeField] private bool autoResize = true;
     [SerializeField] private bool layoutDirty = true;
 
     private void Start()
