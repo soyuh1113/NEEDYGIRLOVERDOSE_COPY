@@ -15,7 +15,14 @@ public class TestDay : MonoBehaviour
 {
     public DayType daytype;
 
-    private int totalDay = 30;
+    private Dictionary<DayType, string> daytypes = new Dictionary<DayType, string>
+    {
+        { DayType.Afternoon, "³·" },
+        { DayType.Evening, "Àú³á" },
+        { DayType.Night, "¹ã" },
+    };
+
+    private int totalDay = 10;
     private int currentDay = 1;
 
     [SerializeField] private TextMeshProUGUI today;
@@ -26,10 +33,10 @@ public class TestDay : MonoBehaviour
     public Button[] actionButtons;
     private int[] skipButtons = { 2, 5, 8 };
 
-    void Start()
+    private void Start()
     {
         daytype = DayType.Afternoon;
-        UpdateUI();
+        UpdateTxt();
     }
 
     public void OnActionButtonClick(int actionIndex)
@@ -44,7 +51,7 @@ public class TestDay : MonoBehaviour
         }
     }
 
-    void PerformAction(int actionIndex)
+    public void PerformAction(int actionIndex)
     {
         Debug.Log("Performing action: " + actionIndex + " during " + daytype);
 
@@ -56,11 +63,11 @@ public class TestDay : MonoBehaviour
         }
         else
         {
-            today.text = "Action completed for " + daytype + ". Press any button to continue.";
+            today.text = "Action completed for " + daytype;
         }
     }
 
-    void SkipPeriod()
+    public void SkipPeriod()
     {
         if (daytype == DayType.Afternoon)
         {
@@ -74,10 +81,10 @@ public class TestDay : MonoBehaviour
             Debug.Log("Skipping to next Day.");
         }
 
-        today.text = "Action skipped to " + daytype + ". Press any button to continue.";
+        today.text = "Action skipped to " + daytype;
     }
 
-    void MoveToNextPeriod()
+    public void MoveToNextPeriod()
     {
         if (daytype == DayType.Afternoon)
         {
@@ -93,26 +100,29 @@ public class TestDay : MonoBehaviour
             if (currentDay <= totalDay)
             {
                 daytype = DayType.Afternoon;
-                Debug.Log("Day " + currentDay + " starts.");
+                Debug.Log("Day " + currentDay);
             }
             else
             {
                 Debug.Log("All days completed.");
-                today.text = "Game Over!";
+                today.text = "°ÔÀÓ ³¡";
                 return;
             }
         }
 
         isActionComplete = false;
-        UpdateUI();
+        UpdateTxt();
     }
 
-    void UpdateUI()
+    public void UpdateTxt()
     {
-        today.text = "Day " + currentDay + ": " + daytype + ". Choose an action.";
+        if(daytypes.TryGetValue(daytype,out string dayType))
+        {
+            today.text = "Day " + currentDay + ": " + dayType;
+        }
     }
 
-    bool IsSkipButton(int actionIndex)
+    public bool IsSkipButton(int actionIndex)
     {
         foreach (int skipIndex in skipButtons)
         {
