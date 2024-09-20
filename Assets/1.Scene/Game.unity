@@ -949,10 +949,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 90472826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f1e8805e712b74d974b5a470f94e7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 389927f8cd0f81146acd9af6181c5b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cursorType: 4
+  windowMove: {fileID: 760956509}
   cursor_Img:
   - {fileID: 2800000, guid: 10e876ea79262e043893868c42a2c5e3, type: 3}
   - {fileID: 2800000, guid: ec3a18b2fad96254b8fea66e80711f6b, type: 3}
@@ -2690,9 +2691,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee851d4bda934b64ebeba381aba53137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  daytype: 0
-  today: {fileID: 807361679}
-  nextday: {fileID: 0}
 --- !u!4 &279382107
 Transform:
   m_ObjectHideFlags: 0
@@ -4878,10 +4876,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 516828140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f1e8805e712b74d974b5a470f94e7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 389927f8cd0f81146acd9af6181c5b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cursorType: 7
+  windowMove: {fileID: 760956509}
   cursor_Img:
   - {fileID: 2800000, guid: 10e876ea79262e043893868c42a2c5e3, type: 3}
   - {fileID: 2800000, guid: ec3a18b2fad96254b8fea66e80711f6b, type: 3}
@@ -6153,13 +6152,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 760956509}
+        m_TargetAssemblyTypeName: WindowMove, Assembly-CSharp
+        m_MethodName: InActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6852,7 +6851,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 760956505}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89a1b23238a023643934cd3f012e09a7, type: 3}
+  m_Script: {fileID: 11500000, guid: c710fb7c9cc2d744caa422229560dc52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   uiTarget: {fileID: 760956506}
@@ -6862,7 +6861,7 @@ MonoBehaviour:
   originSize: {x: 0, y: 0}
   active_Img: {fileID: 21300000, guid: b42730539601eef4f90a12890d230cc2, type: 3}
   inactive_Img: {fileID: 21300000, guid: 8649d8e5e464663408dcc9cd748d78c1, type: 3}
-  cursorLockMode: 2
+  cursorLockMode: 0
 --- !u!1 &766208255
 GameObject:
   m_ObjectHideFlags: 0
@@ -7090,10 +7089,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 769515789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f1e8805e712b74d974b5a470f94e7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 389927f8cd0f81146acd9af6181c5b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cursorType: 5
+  windowMove: {fileID: 760956509}
   cursor_Img:
   - {fileID: 2800000, guid: 10e876ea79262e043893868c42a2c5e3, type: 3}
   - {fileID: 2800000, guid: ec3a18b2fad96254b8fea66e80711f6b, type: 3}
@@ -9157,10 +9157,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 936666785}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f1e8805e712b74d974b5a470f94e7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 389927f8cd0f81146acd9af6181c5b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cursorType: 3
+  windowMove: {fileID: 760956509}
   cursor_Img:
   - {fileID: 2800000, guid: 10e876ea79262e043893868c42a2c5e3, type: 3}
   - {fileID: 2800000, guid: ec3a18b2fad96254b8fea66e80711f6b, type: 3}
@@ -12929,9 +12930,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WindiwController, Assembly-CSharp
-        m_MethodName: close_btn
+      - m_Target: {fileID: 760956509}
+        m_TargetAssemblyTypeName: WindowMove, Assembly-CSharp
+        m_MethodName: ReMove
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13320,7 +13321,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC81C\uC5B4\uD310"
+  m_text: Test
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c026c79ac76b2ac4d83b3c49b93c60f1, type: 2}
   m_sharedMaterial: {fileID: 5323308455868620019, guid: c026c79ac76b2ac4d83b3c49b93c60f1, type: 2}
@@ -14089,10 +14090,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1341970755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f1e8805e712b74d974b5a470f94e7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 389927f8cd0f81146acd9af6181c5b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cursorType: 6
+  windowMove: {fileID: 760956509}
   cursor_Img:
   - {fileID: 2800000, guid: 10e876ea79262e043893868c42a2c5e3, type: 3}
   - {fileID: 2800000, guid: ec3a18b2fad96254b8fea66e80711f6b, type: 3}
@@ -16628,7 +16630,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 760956509}
-        m_TargetAssemblyTypeName: WindowController, Assembly-CSharp
+        m_TargetAssemblyTypeName: WindowMove, Assembly-CSharp
         m_MethodName: ResizeToParent
         m_Mode: 1
         m_Arguments:
@@ -16968,10 +16970,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1567052315}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f1e8805e712b74d974b5a470f94e7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 389927f8cd0f81146acd9af6181c5b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cursorType: 0
+  windowMove: {fileID: 760956509}
   cursor_Img:
   - {fileID: 2800000, guid: 10e876ea79262e043893868c42a2c5e3, type: 3}
   - {fileID: 2800000, guid: ec3a18b2fad96254b8fea66e80711f6b, type: 3}
@@ -17541,10 +17544,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1643698216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f1e8805e712b74d974b5a470f94e7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 389927f8cd0f81146acd9af6181c5b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cursorType: 2
+  windowMove: {fileID: 760956509}
   cursor_Img:
   - {fileID: 2800000, guid: 10e876ea79262e043893868c42a2c5e3, type: 3}
   - {fileID: 2800000, guid: ec3a18b2fad96254b8fea66e80711f6b, type: 3}
@@ -18850,10 +18854,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1808195435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f1e8805e712b74d974b5a470f94e7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 389927f8cd0f81146acd9af6181c5b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cursorType: 1
+  windowMove: {fileID: 760956509}
   cursor_Img:
   - {fileID: 2800000, guid: 10e876ea79262e043893868c42a2c5e3, type: 3}
   - {fileID: 2800000, guid: ec3a18b2fad96254b8fea66e80711f6b, type: 3}

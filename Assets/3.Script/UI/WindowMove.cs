@@ -11,9 +11,12 @@ public class WindowMove : MonoBehaviour, IPointerDownHandler, IDragHandler
     public Vector2 originPos;
     public Vector2 originMousePos;
     public Vector2 movePos;
+    public Vector2 originSize;
 
     [SerializeField] private Sprite active_Img;
     [SerializeField] private Sprite inactive_Img;
+
+    private bool isResizedToParent = false;
 
     public CursorLockMode cursorLockMode;
 
@@ -26,6 +29,7 @@ public class WindowMove : MonoBehaviour, IPointerDownHandler, IDragHandler
         originMousePos = eventData.position;
 
         uiTarget.SetAsLastSibling();
+        UpdateChildImages();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -96,5 +100,43 @@ public class WindowMove : MonoBehaviour, IPointerDownHandler, IDragHandler
                 }
             }
         }
+    }
+
+    public void ResizeToParent()
+    {
+        RectTransform parentRectTransform = uiTarget.parent.GetComponent<RectTransform>();
+        RectTransform uiRectTransform = uiTarget.GetComponent<RectTransform>();
+
+        if (!isResizedToParent)
+        {
+            originSize = uiRectTransform.sizeDelta;
+
+            RectTransform myRectTransform;
+            myRectTransform = transform as RectTransform;
+            myRectTransform.SetAnchor(AnchorPresets.StretchAll);
+
+            Vector2 newSize = new Vector2(Mathf.Min(parentRectTransform.rect.width, uiRectTransform.sizeDelta.x),
+            Mathf.Min(parentRectTransform.rect.height, uiRectTransform.sizeDelta.y));
+            isResizedToParent = true;
+        }
+        else
+        {
+            RectTransform myRectTransform;
+            myRectTransform = transform as RectTransform;
+            myRectTransform.SetAnchor(AnchorPresets.MiddleCenter);
+
+            uiRectTransform.sizeDelta = originSize;
+            isResizedToParent = false;
+        }
+    }
+
+    public void InActive()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void ReMove()
+    {
+        Destroy(gameObject);
     }
 }

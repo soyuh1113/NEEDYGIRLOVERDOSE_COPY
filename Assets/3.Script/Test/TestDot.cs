@@ -8,6 +8,7 @@ public class TestDot : MonoBehaviour
 {
     public Ease ease;
     public int targetX;
+    public int targetY;
 
     public int targetScale;
 
@@ -38,7 +39,10 @@ public class TestDot : MonoBehaviour
         //transform.DOMoveY(targetX, 3).SetEase(ease);
     }
     
-
+    public void TestBtn()
+    {
+        //transform.DOMove(targetY, 5);
+    }
 
 
 
