@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UISetactive : MonoBehaviour
 {
@@ -23,12 +24,17 @@ public class UISetactive : MonoBehaviour
         RectTransform recttransform = clone1.GetComponent<RectTransform>();
         recttransform.anchoredPosition = btnPos;
 
+        Button buttonComponent = clone1.GetComponent<Button>();
+        if (buttonComponent != null)
+        {
+            GameObject targetImage = clone;
+
+            buttonComponent.onClick.AddListener(() =>
+            {
+                targetImage.SetActive(!targetImage.activeSelf);
+            });
+        }
+
         layoutScript.SetLayoutDirty();
     }
-
-    public void UIActive()
-    {
-        
-    }
-
 }
