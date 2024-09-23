@@ -5,18 +5,19 @@ using UnityEngine.UI;
 
 public class UISetactive : MonoBehaviour
 {
+    [SerializeField] private GameObject[] uiPrefab;
+    [SerializeField] private GameObject btnPrefab;
     [SerializeField] private GameObject uiZone;
     [SerializeField] private GameObject uiBtnZone;
-    [SerializeField] private GameObject uiPrefab;
-    [SerializeField] private GameObject btnPrefab;
+    
     [SerializeField] private TestBtnGruop layoutScript;
 
     private Vector2 uiPos;  //어떤 ui냐에 따라 다름
     private Vector2 btnPos;   //-85,0
 
-    public void BtnClick()
+    public void BtnClick(int uiNum)
     {
-        GameObject clone = Instantiate(uiPrefab, uiZone.transform);
+        GameObject clone = Instantiate(uiPrefab[uiNum], uiZone.transform);
         RectTransform rectTransform = clone.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = uiPos;
 
