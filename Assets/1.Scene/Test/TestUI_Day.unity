@@ -2738,10 +2738,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1039530281}
   - {fileID: 1240806349}
   - {fileID: 816211424}
   - {fileID: 1283737386}
-  - {fileID: 1039530281}
   - {fileID: 642869723}
   - {fileID: 984727709}
   - {fileID: 48055090}
@@ -2765,7 +2765,7 @@ GameObject:
   - component: {fileID: 816211426}
   - component: {fileID: 816211425}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3146,7 +3146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &938237182
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3814,7 +3814,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 155, y: -404}
+  m_AnchoredPosition: {x: 447, y: -404}
   m_SizeDelta: {x: 388.4299, y: 72.8306}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &984727710
@@ -4315,7 +4315,7 @@ GameObject:
   - component: {fileID: 1039530283}
   - component: {fileID: 1039530282}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Button1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4731,7 +4731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1175264668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5034,7 +5034,7 @@ GameObject:
   - component: {fileID: 1240806351}
   - component: {fileID: 1240806350}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5370,19 +5370,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1283737388}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2074645780}
-        m_TargetAssemblyTypeName: UISetactive, Assembly-CSharp
-        m_MethodName: BtnClick
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1283737388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5771,14 +5759,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2009203157}
-        m_TargetAssemblyTypeName: TopicTest, Assembly-CSharp
-        m_MethodName: OnButtonClick
-        m_Mode: 3
+      - m_Target: {fileID: 2009203159}
+        m_TargetAssemblyTypeName: TopicTest2, Assembly-CSharp
+        m_MethodName: OnMainButtonClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7780,6 +7768,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2009203158}
   - component: {fileID: 2009203157}
+  - component: {fileID: 2009203159}
   m_Layer: 0
   m_Name: TopicTest
   m_TagString: Untagged
@@ -7794,7 +7783,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009203156}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aee80edee077c1e44ac939e59fa65a32, type: 3}
   m_Name: 
@@ -7821,6 +7810,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2009203159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009203156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8d1a680629fff4d93ed10db7d3a7f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainButton: {fileID: 1577993084}
+  unlockButton: {fileID: 1869806179}
 --- !u!1 &2043320231
 GameObject:
   m_ObjectHideFlags: 0
@@ -8038,9 +8041,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2009203157}
-        m_TargetAssemblyTypeName: TopicTest, Assembly-CSharp
-        m_MethodName: Clear
+      - m_Target: {fileID: 2009203159}
+        m_TargetAssemblyTypeName: TopicTest2, Assembly-CSharp
+        m_MethodName: OnEventOccur
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
