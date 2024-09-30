@@ -2885,6 +2885,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816211423}
   m_CullTransparentMesh: 1
+--- !u!1 &854590549 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4927913606668524781, guid: ef9df155729803c4fad81c678dd0e0bb, type: 3}
+  m_PrefabInstance: {fileID: 1016575852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &854590555
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854590549}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a3f4e9e4a58f93143a889e79ee1e687a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &858315036
 GameObject:
   m_ObjectHideFlags: 0
@@ -4176,6 +4202,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 451287105}
     m_Modifications:
+    - target: {fileID: 358893479240323328, guid: ef9df155729803c4fad81c678dd0e0bb, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a3f4e9e4a58f93143a889e79ee1e687a, type: 2}
     - target: {fileID: 2160023508483797166, guid: ef9df155729803c4fad81c678dd0e0bb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4263,7 +4293,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4927913606668524781, guid: ef9df155729803c4fad81c678dd0e0bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 854590555}
   m_SourcePrefab: {fileID: 100100000, guid: ef9df155729803c4fad81c678dd0e0bb, type: 3}
 --- !u!224 &1016575853 stripped
 RectTransform:
