@@ -37,5 +37,4 @@ public class Test : MonoBehaviour
         print(player2.coin);
         print(player2.skill);
     }
-
 }
