@@ -12,6 +12,8 @@ public enum TimeType
 
 public class TestDay2 : MonoBehaviour
 {
+    public TestEnd testend;
+
     public TimeType timetype = TimeType.Night;
 
     private Dictionary<TimeType, string> timeType = new Dictionary<TimeType, string>
@@ -83,6 +85,7 @@ public class TestDay2 : MonoBehaviour
         if (currentDay == totalDay && timetype == TimeType.Night)
         {
             Debug.Log("게임 끝~ 엔딩!");
+            testend.End();
             return;
         }
 
