@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
-using TMPro;
 
 public class ChatManager : MonoBehaviour
 {
@@ -26,8 +24,18 @@ public class ChatManager : MonoBehaviour
 
         if (jsonFile != null)
         {
-            TestChat dialogueData = JsonUtility.FromJson<TestChat>(jsonFile.text);
-            dialogues = dialogueData.chats;
+            ChatData chatData = JsonUtility.FromJson<ChatData>(jsonFile.text);
+
+            foreach(Chat chat in chatData.chat)
+            {
+                if(chat.Lines != null)
+                {
+                    foreach(Line line in chat.Lines)
+                    {
+                        dialogues.Add(line.line);
+                    }
+                }
+            }
         }
         else
         {
