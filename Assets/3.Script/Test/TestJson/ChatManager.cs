@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ChatManager : MonoBehaviour
 {
-    public string jsonFileName = "TestLive";
+    public string jsonFileName = "Live";
 
     public GameObject buttonPrefab;
 
     public Transform buttonContainer;
 
-    private List<string> dialogues = new List<string>();
+    public TextMeshProUGUI additionalTextObject;
+
+    private List<Chat> chatList = new List<Chat>();
 
     void Start()
     {
@@ -25,17 +28,7 @@ public class ChatManager : MonoBehaviour
         if (jsonFile != null)
         {
             ChatData chatData = JsonUtility.FromJson<ChatData>(jsonFile.text);
-
-            foreach(Chat chat in chatData.chat)
-            {
-                if(chat.Lines != null)
-                {
-                    foreach(Line line in chat.Lines)
-                    {
-                        dialogues.Add(line.line);
-                    }
-                }
-            }
+            chatList = chatData.chat;
         }
         else
         {
@@ -45,19 +38,54 @@ public class ChatManager : MonoBehaviour
 
     void CreateDialogueButtons()
     {
-        foreach (string dialogue in dialogues)
+        foreach (Chat chat in chatList)
         {
-            GameObject newButton = Instantiate(buttonPrefab, buttonContainer);
+            foreach(Line line in chat.Lines)
+            {
+                GameObject newButton = Instantiate(buttonPrefab, buttonContainer);
 
-            Text buttonText = newButton.GetComponentInChildren<Text>();
-            if (buttonText != null)
-            {
-                buttonText.text = dialogue;
+                TextMeshProUGUI buttonText = newButton.GetComponentInChildren<TextMeshProUGUI>();
+                if (buttonText != null)
+                {
+                    if (chat.id == 1)
+                    {
+                        buttonText.text = "[ID 1]" + line.line;
+                    }
+                    else if (chat.id == 2)
+                    {
+                        buttonText.text = "[ID 2]" + line.line;
+                    }
+                }
+                else
+                {
+                    Debug.LogError("버튼에 Text 컴포넌트가 없습니다!");
+                }
+
+                Button buttonComponent = newButton.GetComponent<Button>();
+                if (buttonComponent != null)
+                {
+                    buttonComponent.onClick.AddListener(() => ClearButtonText(buttonText));
+                }
+                else
+                {
+                    Debug.LogError("버튼에 Button 컴포넌트가 없습니다!");
+                }
             }
-            else
+        }
+    }
+
+    private void ClearButtonText(TextMeshProUGUI buttonText)
+    {
+        if(buttonText.text== "꺼져")
+        {
+            if (additionalTextObject != null)
             {
-                Debug.LogError("버튼에 Text 컴포넌트가 없습니다!");
+                additionalTextObject.text += buttonText.text + "\n";
             }
+        }
+        else
+        {
+            buttonText.text = "";
         }
     }
 }
