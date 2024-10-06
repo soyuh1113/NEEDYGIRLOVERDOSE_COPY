@@ -35,50 +35,20 @@ public class TestBtnGruop : MonoBehaviour
 
         if (childCount == 0) return;
 
-        float totalWidth = 0f;
+        float availableWidth = parentRect.rect.width - spacing * (childCount - 1);
+        float buttonWidth = availableWidth / childCount;
+
+        float currentX = 0f;
 
         for (int i = 0; i < childCount; i++)
         {
             RectTransform child = parentRect.GetChild(i) as RectTransform;
             if (child == null) continue;
 
-            totalWidth += child.sizeDelta.x + spacing;
-        }
+            child.sizeDelta = new Vector2(buttonWidth, child.sizeDelta.y);
 
-        if (totalWidth > parentRect.rect.width)
-        {
-            float scaleFactor = (parentRect.rect.width - spacing * (childCount - 1)) / (totalWidth - spacing * (childCount - 1));
-
-            for (int i = 0; i < childCount; i++)
-            {
-                RectTransform child = parentRect.GetChild(i) as RectTransform;
-                if (child == null) continue;
-
-                Vector2 originalSize = child.sizeDelta;
-                child.sizeDelta = new Vector2(originalSize.x * scaleFactor, originalSize.y);
-
-                if (i == 0)
-                {
-                    child.anchoredPosition = new Vector2(0, 0);
-                }
-                else
-                {
-                    RectTransform previousChild = parentRect.GetChild(i - 1) as RectTransform;
-                    child.anchoredPosition = new Vector2(previousChild.anchoredPosition.x + previousChild.sizeDelta.x + spacing, 0);
-                }
-            }
-        }
-        else
-        {
-            float currentX = 0f;
-            for (int i = 0; i < childCount; i++)
-            {
-                RectTransform child = parentRect.GetChild(i) as RectTransform;
-                if (child == null) continue;
-
-                child.anchoredPosition = new Vector2(currentX, 0);
-                currentX += child.sizeDelta.x + spacing;
-            }
+            child.anchoredPosition = new Vector2(currentX, 0);
+            currentX += buttonWidth + spacing;
         }
     }
 

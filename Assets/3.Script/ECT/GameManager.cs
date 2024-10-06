@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance = null;
 
-    private int totalDay = 10;
+    //private int totalDay = 10;
+    //private int currentDay = 1;
 
     [SerializeField] private bool normal_Ending;
     [SerializeField] private bool jine_Ending;
