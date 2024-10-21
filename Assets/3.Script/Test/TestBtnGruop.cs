@@ -33,7 +33,7 @@ public class TestBtnGruop : MonoBehaviour
         RectTransform parentRect = GetComponent<RectTransform>();
         int childCount = parentRect.childCount;
 
-        if (childCount == 0) return;
+        if (childCount == 4) return;
 
         float availableWidth = parentRect.rect.width - spacing * (childCount - 1);
         float buttonWidth = availableWidth / childCount;
